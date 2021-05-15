@@ -14,7 +14,7 @@ namespace ConsoleIO
             //Append();
             //Read();
             //Delete(path, Console.ReadLine());
-            //Replace(path, Console.ReadLine(), Console.ReadLine());    
+            Replace(path, Console.ReadLine(), Console.ReadLine());    
         }
         static void Read()
         {
@@ -48,16 +48,15 @@ namespace ConsoleIO
             }
         }
 
-        static void Replace(string filePath, string searchText, string replaceText)
+        static void Replace(string path, string searchText, string replaceText)
         {
-            StreamReader reader = new StreamReader(path);
-            string content = reader.ReadToEnd();
-            reader.Close();
+            StreamReader sr = new StreamReader(path);
+            string content = sr.ReadToEnd();
+            sr.Close();
             content = Regex.Replace(content, searchText, replaceText);
-
-            StreamWriter writer = new StreamWriter(filePath);
-            writer.Write(content);
-            writer.Close();
+            StreamWriter sw = new StreamWriter(path);
+            sw.Write(content);
+            sw.Close();
         }
     }
 }
